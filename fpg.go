@@ -5,17 +5,12 @@ import (
 	"flag"
 	"fmt"
 	"io"
-
 	"os"
 	"time"
-
 	"github.com/pymaxion/geographiclib-go/geodesic"
 	"github.com/pymaxion/geographiclib-go/geodesic/capabilities"
-
 	fpg_types "fpg_types"
-
 	el "elastic"
-
 	log "github.com/sirupsen/logrus"
 )
 
@@ -57,8 +52,8 @@ func main() {
 	log.SetLevel(log.InfoLevel)
 
 	useElastic := flag.Bool("elastic", false, "Output results to Elasticsearch (localhost)")
-	useConsole := flag.Bool("console", false, "Output results to the console")
-	perpetual := flag.Bool("perpetual", false, "Real time")
+	useConsole := flag.Bool("console", true, "Output results to the console")
+	perpetual := flag.Bool("perpetual", false, "Generate positions every few seconds, until the end of time (default is for the previous 24 hours).")
 	flag.Parse()
 
 	if *useElastic {
