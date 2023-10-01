@@ -48,6 +48,7 @@ The script has a few issues:
 - The JSON file is simialr to a flight schedule, using local times with no dates.
   However flights operate across dates (either forwards or backeards), so the flight arrival time needs a [+-][123].
 - There is no batching of data being pushed to Elasticsearch, it might not be very fast.
+- The whole thing runs on local time, while the JSON is UTC, simlple fix, but easier for testing to be local.
 
 # Credita
 
