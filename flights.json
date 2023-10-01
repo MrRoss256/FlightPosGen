@@ -1,0 +1,29 @@
+{
+    "flights": [
+      {
+        "flightdes": "AA101",
+        "dep": { "code": "LHR", "time": "08:00:00", "long": 51.4706, "lat": -0.461941 },
+        "arr": { "code": "SFO", "time": "23:00:00", "long": 37.37, "lat": -122.375 }
+      },
+      {
+        "flightdes": "BA102",
+        "dep": { "code": "PER", "time": "08:25:43", "long": -31.9403, "lat": 115.967 },
+        "arr": { "code": "SAL", "time": "23:59:43", "long": 40.96,  "lat": -5.5 }
+      },
+      {
+        "flightdes": "ZZ102",
+        "dep": { "code": "PER", "time": "21:25:43", "long": -31.9403, "lat": 115.967 },
+        "arr": { "code": "SAL", "time": "22:25:43", "long": 40.96,  "lat": -5.5 }
+      },
+      {
+        "flightdes": "ZZ104",
+        "dep": { "code": "SYD", "time": "21:45:43", "long": -33.946, "lat": 151.1770 },
+        "arr": { "code": "SAL", "time": "22:25:43", "long": 40.96,  "lat": -5.5 }
+      },
+      {
+        "flightdes": "ZZ124",
+        "dep": { "code": "MEL", "time": "21:20:43", "long": -37.663712, "lat": 144.843 },
+        "arr": { "code": "MAD", "time": "22:20:43", "long": 40.47,  "lat": -3.56264 }
+      }
+    ]
+  }
