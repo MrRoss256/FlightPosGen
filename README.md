@@ -5,9 +5,6 @@ Generate Flight Positions given a flight's origin and destination
 # Installing
 Build with golang, run the executable.
 
-
-
-
 # Running
 
 The script runs in one of two modes, "Perpetual" mode the script executes every 30 seconds and generates position information for the flights that are currently active.
