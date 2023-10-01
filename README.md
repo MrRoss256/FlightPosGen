@@ -1,6 +1,5 @@
 # FlightPosGen
-Generate Flight Positions given a flight's origin and destination 
-
+Generate a flights geopositional positions given a flight's departure time, origin and destination.
 
 # Installing
 Build with golang, run the executable.
