@@ -1,16 +1,18 @@
 package main
 
 import (
+	el "elastic"
 	"encoding/json"
 	"flag"
 	"fmt"
+	fpg_types "fpg_types"
 	"io"
 	"os"
+	rmq "rabbit"
 	"time"
+
 	"github.com/pymaxion/geographiclib-go/geodesic"
 	"github.com/pymaxion/geographiclib-go/geodesic/capabilities"
-	fpg_types "fpg_types"
-	el "elastic"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -52,12 +54,17 @@ func main() {
 	log.SetLevel(log.InfoLevel)
 
 	useElastic := flag.Bool("elastic", false, "Output results to Elasticsearch (localhost)")
+	useRabbit := flag.Bool("rabbit", false, "Output results to RabbitMQ (localhost)")
 	useConsole := flag.Bool("console", true, "Output results to the console")
 	perpetual := flag.Bool("perpetual", false, "Generate positions every few seconds, until the end of time (default is for the previous 24 hours).")
 	flag.Parse()
 
 	if *useElastic {
 		el.Connect()
+	}
+
+	if *useRabbit {
+		rmq.Connect()
 	}
 
 	// Populate the flts with the json data, should be coming from the TDG
@@ -96,6 +103,9 @@ func main() {
 					if *useElastic == true {
 						el.Write(loc)
 					}
+					if *useRabbit == true {
+						rmq.Write(loc)
+					}
 				}
 			}
 			time.Sleep(10 * time.Second)
@@ -114,6 +124,9 @@ func main() {
 					}
 					if *useElastic == true {
 						el.Write(loc)
+					}
+					if *useRabbit == true {
+						rmq.Write(loc)
 					}
 				}
 			}
