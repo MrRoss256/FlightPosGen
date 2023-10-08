@@ -81,12 +81,30 @@ func main() {
 		fmt.Println(err)
 	}
 
+	now := time.Now()
+
 	// Calculate some useful values for the flights, flight duration and speed
 	log.Info("Parsed and enriched flights:")
 	for i := range flts.Flights {
+
+		arrLocation, err := time.LoadLocation(flts.Flights[i].Arr.Tz)
+		if err != nil {
+			fmt.Println("Error loading location:", err)
+			return
+		}
+
+		depLocation, err := time.LoadLocation(flts.Flights[i].Dep.Tz)
+		if err != nil {
+			fmt.Println("Error loading location:", err)
+			return
+		}
+
+		depTime := time.Date(now.Year(), now.Month(), now.Day(), time.Time(flts.Flights[i].Dep.Time).Hour(), time.Time(flts.Flights[i].Dep.Time).Minute(), time.Time(flts.Flights[i].Dep.Time).Second(), 0, depLocation)
+		arrTime := time.Date(now.Year(), now.Month(), now.Day(), time.Time(flts.Flights[i].Arr.Time).Hour(), time.Time(flts.Flights[i].Arr.Time).Minute(), time.Time(flts.Flights[i].Arr.Time).Second(), 0, arrLocation)
+
 		rag := geodesic.WGS84.Inverse(flts.Flights[i].Dep.Long, flts.Flights[i].Dep.Lat, flts.Flights[i].Arr.Long, flts.Flights[i].Arr.Lat)
-		flts.Flights[i].Duration = int64(time.Time(flts.Flights[i].Arr.Time).Sub(time.Time(flts.Flights[i].Dep.Time)).Seconds())
-		flts.Flights[i].Speed = int64(int64(rag.S12) / flts.Flights[i].Duration)
+		flts.Flights[i].Duration = int64(arrTime.Sub(depTime).Seconds())
+		flts.Flights[i].Speed = int64(int64(rag.S12) / flts.Flights[i].Duration) // This may break if a flight is in the air during DST transitions
 		log.Infof("\t%#v\n", flts.Flights[i])
 	}
 
@@ -108,7 +126,7 @@ func main() {
 					}
 				}
 			}
-			time.Sleep(10 * time.Second)
+			time.Sleep(60 * time.Second)
 		}
 	} else {
 		//

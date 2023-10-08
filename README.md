@@ -45,12 +45,12 @@ The script is written as a experiment to see the feasibility of using such a too
 
 The script has a few issues:
 - Lots of hard-coding, assumes Elasticsearch or RabbitMQ is running locally.
-- Will potentially create duplicate records if run multiple times.
+- Will create duplicate records if run multiple times.
 - The JSON file is simialr to a flight schedule, using local times with no dates.
   However flights operate across dates (either forwards or backwards), so the flight arrival time needs a [+-][123] adding.
 - There is no batching of data being pushed to Elasticsearch, it might not be very fast.
 - Terrible error handling.
-- The whole thing runs on local time, while the JSON is UTC, simlple fix, but easier for testing to be local.
+- Time handling is not quite complete.
 
 # Credits
 

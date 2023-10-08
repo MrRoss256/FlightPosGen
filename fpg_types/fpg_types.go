@@ -13,14 +13,15 @@ type TimeNoDate time.Time
 //	   "flights": [
 //	     {
 //	       "flightdes": "AA101",
-//	       "dep": { "code": "LHR", "time": "08:00:00", "long": 51.4706, "lat": -0.461941 },
-//	       "arr": { "code": "SFO", "time": "23:00:00", "long": 37.37, "lat": -122.375 }
+//	       "dep": { "code": "LHR", "time": "08:00:00", "long": 51.4706, "lat": -0.461941 , "tz": "Europe/London"},
+//	       "arr": { "code": "SFO", "time": "23:00:00", "long": 37.37, "lat": -122.375, "tz" : "America/California"}
 //	     },
 type Loc struct {
 	Code string     `json:"code"`
 	Time TimeNoDate `json:"time"`
 	Long float64    `json:"long"`
 	Lat  float64    `json:"lat"`
+	Tz   string     `json:"tz"`
 }
 
 type Flight struct {
