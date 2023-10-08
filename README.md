@@ -29,12 +29,12 @@ The `flights.json` lists the flights, the flight departure, the from-to's geo-lo
 
 ```json
  {
-    "flights": [
-      {
-        "flightdes": "AA101",
-        "dep": { "code": "LHR", "time": "08:00:00", "long": 51.4706, "lat": -0.461941 },
-        "arr": { "code": "SFO", "time": "23:00:00", "long": 37.37, "lat": -122.375 }
-      }
+"flights": [
+	     {
+	       "flightdes": "AA101",
+	       "dep": { "code": "LHR", "time": "08:00:00", "long": 51.4706, "lat": -0.461941 , "tz": "Europe/London"},
+	       "arr": { "code": "SFO", "time": "23:00:00", "long": 37.37, "lat": -122.375, "tz" : "America/California"}
+	     }
     ]
  }
 ```
