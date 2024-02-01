@@ -57,7 +57,7 @@ func (t *TimeNoDate) UnmarshalJSON(data []byte) error {
 //	{
 //		"flightdes": "AA101",
 //		"deptime": "2023-09-20T08:00:00Z",
-//		"eventtime": "2023-09-20T08:16:00Z",
+//		"@timestamp": "2023-09-20T08:16:00Z",
 //		"location": {
 //		  "lon": -2.0211443935216784,
 //		  "lat": 52.45964431712232
