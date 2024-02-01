@@ -70,6 +70,6 @@ type Location struct {
 type FlightLoc struct {
 	FlightDes string    `json:"flightdes"`
 	DepTime   time.Time `json:"deptime"`
-	EventTime time.Time `json:"eventtime"`
+	EventTime time.Time `json:"@timestamp"`
 	Location  Location  `json:"location"`
 }
