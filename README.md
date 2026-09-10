@@ -41,7 +41,7 @@ The `flights.json` lists the flights, the flight departure, the from-to's geo-lo
 
 # Disclaimer
 
-The script is written as a experiment to see the feasibility of using such a tool to create test data, and as such it's not production ready, but with a little effort caould be.
+The script is written as a experiment to see the feasibility of using such a tool to create test data, and as such it's not production ready, but with a little effort could be.
 
 The script has a few issues:
 - Lots of hard-coding, assumes Elasticsearch or RabbitMQ is running locally.
